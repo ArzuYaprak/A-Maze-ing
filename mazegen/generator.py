@@ -9,7 +9,6 @@ Bu hücrenin hexadecimal gösterimi D olur
 # Provide a reusable maze generator.
 
 import random
-from .solver import solve_maze
 
 
 NORTH = 1
@@ -219,7 +218,7 @@ class MazeGenerator:
         ):
             return set()
         # bunlar desenin sol üst köşesini belirtir
-        start_x = self.width // 2 - 3
+        start_x = self.width // 2 - 3#Desenimizde iki rakam arasındaki boşluk, desenin 3 numaralı sütununda # . # . # # #
         start_y = (self.height - pattern_height) // 2
 
         cells: set[tuple[int, int]] = set()
@@ -292,6 +291,8 @@ class MazeGenerator:
         exit_position: tuple[int, int],
     ) -> list[tuple[int, int]]:
         """Return a shortest path using the BFS solver."""
+        from .solver import solve_maze
+
         return solve_maze(self, entry, exit_position)
 
     def get_dead_ends(self) -> list[tuple[int, int]]:
@@ -361,7 +362,7 @@ class MazeGenerator:
     def braid(self) -> None:
         """Reduce dead ends by opening additional safe passages."""
         dead_ends = self.get_dead_ends()
-        self.rng.shuffle(dead_ends)
+        self.rng.shuffle(dead_ends)#listenin elemanlarını rastgele sıraya dizer
 
         for x, y in dead_ends:
             if len(self.get_accessible_neighbors(x, y)) != 1:

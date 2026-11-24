@@ -36,7 +36,7 @@ def read_config_file(file_path: str) -> dict[str, str]:
                     f"Line {line_number}: expected KEY=VALUE."
                 )
 
-            key, value = line.split("=", 1)
+            key, value = line.split("=", 1)#1 en az bir kez böl demek, Yani metni yalnızca ilk = işaretinden ayırıyoruz
             key = key.strip().upper()
             value = value.strip()
 
@@ -153,12 +153,12 @@ def load_config(file_path: str) -> MazeConfig:
                 "SEED must be an integer."
             ) from None
 
-    config = MazeConfig(
+    config = MazeConfig(#isimli arguman yöntemiyle nesneyiürettik çünkü aynı tür değerleri yanlış sırayla verme riskini azalttık
         width=width,
         height=height,
         entry=entry,
         exit=exit_position,
-        output_file=settings["OUTPUT_FILE"],
+        output_file=settings["OUTPUT_FILE"],#output_file ın karşısındaki değeri getirecek output_file="maze.txt",
         perfect=perfect,
         seed=seed,
     )

@@ -1,12 +1,16 @@
 """BFS ile giristen cikisa en kisa yolu bulma islemleri."""
 
-from __future__ import annotations
-
 from collections import deque
-from typing import TYPE_CHECKING
 
-if TYPE_CHECKING:
-    from .generator import MazeGenerator
+from .generator import MazeGenerator
+
+# Önceki yaklaşım için öğrenme notları (artık kullanılmıyor):
+# from __future__ import annotations:
+# tür ipuçlarının tanımlama anında hemen değerlendirilmesini erteler
+# TYPE_CHECKING, program çalışırken False olur. Yani MazeGenerator burada
+# çalışma sırasında import edilmez; bu importu mypy gibi tür kontrol
+# araçları görür.
+# Şimdi import generator.solve() içinde ertelendiği için bunlar gerekmiyor.
 
 
 # en kısa yol için bfs algoritması en yakın hücreler araştırılacak
